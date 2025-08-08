@@ -4,9 +4,14 @@ import os
 from langchain_community.llms import HuggingFacePipeline
 from langchain.prompts import PromptTemplate
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
+import os
+from dotenv import load_dotenv
 
+load_dotenv()  # loads .env file
+
+MODEL_ID = os.getenv("MODEL_ID", "google/flan-t5-large")
 # MODEL_ID = "google/flan-t5-large"  # bigger, slower, better quality
-MODEL_ID = "google/flan-t5-base"    # smaller, faster for testing
+# MODEL_ID = "google/flan-t5-base"    # smaller, faster for testing
 
 def get_llm():
     """
