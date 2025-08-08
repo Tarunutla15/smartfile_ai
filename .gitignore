@@ -1,2 +1,24 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment folders
+venv/
+env/
+
+# Data folders (tracked by DVC, so ignore in Git)
 data/uploaded_pdfs/
 chroma_db/
+
+# Streamlit config
+.streamlit/
+
+# Logs
+logs/
+*.log
+
+# DVC files/folders (except .dvcignore, .dvc/)
+.dvc/cache/
+.dvc/files/
