@@ -1,0 +1,6 @@
+outs:
+- md5: a65610bb6a6b451a3f0d1d0384057516.dir
+  size: 145112
+  nfiles: 1
+  hash: md5
+  path: uploaded_pdfs
