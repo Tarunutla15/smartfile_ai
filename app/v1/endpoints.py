@@ -1,16 +1,11 @@
-# smartfile_ai/app/v1/endpoints.py
-
 import os
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, UploadFile, File, HTTPException, Request
 from pydantic import BaseModel
 from typing import List
-from fastapi import Request
-from app.core import pdf_parser, embedder, retriever
+from app.core import pdf_parser, embedder, retriever, version_control
 
-# Create an API router for version 1
 router = APIRouter(prefix="/v1")
 
-# Pydantic model for the chat request body
 class ChatQuery(BaseModel):
     query: str
 
@@ -47,6 +42,15 @@ async def upload_pdf(files: List[UploadFile] = File(...)):
     text_chunks = pdf_parser.get_text_chunks(all_text)
     vector_db = embedder.get_vector_db_instance()
     embedder.add_documents_to_db(vector_db, text_chunks)
+
+    # No persist() call here because it's deprecated or handled internally
+    
+    # Now track and push changes with DVC
+    try:
+        version_control.dvc_add_commit_push(upload_dir)
+        version_control.dvc_add_commit_push(embedder.PERSIST_DIRECTORY)
+    except Exception as e:
+        print(f"Warning: DVC tracking failed: {e}")
 
     return {"message": f"Successfully processed {len(files)} file(s) and updated the vector database."}
 
