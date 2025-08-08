@@ -22,6 +22,7 @@ It leverages:
 ---
 
 ## 📂 Folder Structure
+```
 smartfile_ai/
 ├── app/
 │ ├── core/
@@ -39,7 +40,7 @@ smartfile_ai/
 ├── requirements.txt
 ├── Dockerfile
 └── .env
-
+```
 
 ---
 
