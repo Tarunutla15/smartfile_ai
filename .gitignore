@@ -22,3 +22,4 @@ logs/
 # DVC files/folders (except .dvcignore, .dvc/)
 .dvc/cache/
 .dvc/files/
+/chroma_db
