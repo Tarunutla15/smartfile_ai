@@ -115,3 +115,4 @@ Run the container:
 ```bash
 docker run -p 8000:8000 smartfile_ai
 ```
+<img width="848" height="594" alt="image" src="https://github.com/user-attachments/assets/8b5c395a-cdb6-4e31-8ff5-7c0fab8b910d" />
